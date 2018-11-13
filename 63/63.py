@@ -39,18 +39,15 @@ for sequence in data:
     number = int(sequence, 2)
     temp = number
     dividers = []
-    sad = False
 
-    for i in range(2, int(number/2)):
-        if len(dividers) > 2 or (dividers is False and i > sqrt(dividers)):
-            sad = True
+    for i in range(2, int(number/2)+1):
+        if len(dividers) > 2 or (dividers is False and i > sqrt(number)):
             break
-        if temp % i == 0:
+        while temp % i == 0:
             temp /= i
             dividers.append(i)
-    if sad:
-        continue
     if len(dividers) == 2:
+        print(number, temp, dividers)
         count += 1
         smallest = number if number < smallest else smallest
         largest = number if number > largest else largest
